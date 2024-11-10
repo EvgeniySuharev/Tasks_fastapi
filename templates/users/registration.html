@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<div align="center">
+    <h2>Форма регистрации</h2>
+    <form action="/register" method="post">
+        <p>
+            Имя:<br>
+            <input name="name" type="text"/>
+        </p>
+        <p>
+            Пароль:<br>
+            <input name="password1" type="text" />
+        </p>
+        <p>
+            Повторите пароль:<br>
+            <input name="password2" type="text" />
+        </p>
+        <input type="submit" value="Зарегистрировать" />
+    </form>
+</div>
+{% endblock %}

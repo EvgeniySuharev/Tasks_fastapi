@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+      <style>
+          .menu {
+	width: 100%;
+	display: table;
+}
+.menu ul {
+	display: table-row;
+}
+.menu li {
+	display: table-cell;
+	background: #2767A0;
+}
+.menu ul li:hover, .menu a:hover {
+	background: #666;
+}
+.menu li a {
+	display: block;
+	padding: 8px 15px;
+	color: #fff;
+	text-align: center;
+}
+      </style>
+  </head>
+  <body>
+    <h2 align="center">Добро пожаловать! Это Ваш личный список дел.</h2>
+    <h3 align="center">{{ msg }}</h3>
+  <div class="menu">
+	<ul>
+		<li><a href="/">Главная</a></li>
+		<li><a href="/all_tasks/">Мои задачи</a></li>
+        <li><a href="#">Выйти</a></li>
+		<li><a href="/create_user/">Зарегистрироваться</a></li>
+		<li><a href="#">Войти</a></li>
+	</ul>
+</div>
+{% block content %}
+    {% endblock %}
+  </body>
+</html>

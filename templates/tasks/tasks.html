@@ -1,0 +1,21 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<div align="center">
+        <form action="/create_task" method="post">
+            Название:<br>
+            <input name="title" type="text"/>
+            <p>
+                Содержание:<br>
+            <input name="content" type="text" />
+            <input type="submit" value="Создать задачу" />
+            </p>
+    </form>
+    {% for task in all_tasks %}
+    <p>
+        {{ task.title }} | {{ task.content }}
+    <form action="#" method="post">
+    <input type="submit" value="Удалить задачу"></form>
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}
