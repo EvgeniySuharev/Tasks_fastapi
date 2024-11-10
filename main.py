@@ -108,8 +108,7 @@ async def create_task(request: Request,
 
 
 @app.get('/all_tasks/')
-async def all_tasks(credentials: Annotated[HTTPBasicCredentials, Depends(get_current_user)],
-                    request: Request,
+async def all_tasks(request: Request,
                     db: Annotated[Session, Depends(get_db)]):
     res = db.execute(select(Task))
     tasks = res.scalars().all()
@@ -119,3 +118,12 @@ async def all_tasks(credentials: Annotated[HTTPBasicCredentials, Depends(get_cur
         'all_tasks': tasks
     }
     return templates.TemplateResponse('tasks/tasks.html', context)
+
+
+@app.post('/delete_task/{task_id}')
+async def delete_task(db: Annotated[Session, Depends(get_db)],
+                      task_id: int):
+    query = delete(Task).where(Task.id == task_id)
+    db.execute(query)
+    db.commit()
+    return RedirectResponse('/all_tasks/', status_code=status.HTTP_302_FOUND)

@@ -13,7 +13,7 @@
     {% for task in all_tasks %}
     <p>
         {{ task.title }} | {{ task.content }}
-    <form action="#" method="post">
+    <form action="/delete_task/{{ task.id }}" method="post">
     <input type="submit" value="Удалить задачу"></form>
     </p>
     {% endfor %}
